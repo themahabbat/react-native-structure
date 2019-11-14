@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import { languages } from './localization'
+import { config } from './constants'
 
 export function useInterval(callback, delay) {
     const savedCallback = useRef();
@@ -45,12 +46,10 @@ export async function setLang(lang, _setState) {
 
 
 export function request(type, url, data, token, successCallback = null, errorCallback = null) {
-    axios.defaults.headers.common['Authorization'] = "Bearer " + token;
+    if (token) axios.defaults.headers.common['Authorization'] = "Bearer " + token;
     axios.defaults.headers.post['Accept'] = 'application/json';
 
-    console.log(constants.apiURL + url, token)
-
-    axios[type](constants.apiURL + url, data).then(res => {
+    axios[type](config.apiURL + url, data).then(res => {
         if (successCallback) successCallback(res)
     }).catch(err => {
         if (errorCallback) errorCallback(err)

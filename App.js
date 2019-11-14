@@ -4,9 +4,8 @@ import * as Font from 'expo-font'
 import { Asset } from 'expo-asset'
 import { SplashScreen } from 'expo'
 
-import { config, images as appImages } from './constants'
+import { config, fonts, images as appImages } from './constants'
 
-import { Ionicons } from '@expo/vector-icons';
 import { ViewContainer, SplashScreen as SplashScreenView } from './components';
 
 import { MainContextProvider } from './context'
@@ -35,19 +34,15 @@ class App extends React.Component {
     async initApp() {
         SplashScreen.hide()
 
-        const images = Object.keys(appImages).map(key => appImages[key])
-
-        const cacheImages = images.map(image => {
-            return Asset.fromModule(image).downloadAsync()
+        const cacheImages = Object.keys(appImages).map(key => {
+            return Asset.fromModule(appImages[key]).downloadAsync()
         })
 
         return Promise.all([
             cacheImages,
 
             Font.loadAsync({
-                'Roboto': require('native-base/Fonts/Roboto.ttf'),
-                'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
-                ...Ionicons.font,
+                ...fonts
             })
         ])
     }

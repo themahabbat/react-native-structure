@@ -1,31 +1,29 @@
 import React from 'react'
 
-import { View } from 'react-native'
+import { View, Image } from 'react-native'
 
 import Text from '../Text'
 import Touchable from '../Touchable'
 
-import { layout } from '../../constants'
+import { layout, config, images } from '../../constants'
 
 import styled from 'styled-components'
 
 export function Item(props) {
 
     const style = {
-        marginHorizontal: 10
+        marginHorizontal: 6
     }
 
-    return <Touchable style={style} onPress={props.onPress}>
+    return <View style={style}>
         {props.children}
-    </Touchable>
+    </View>
 
 }
 
 export function Left(props) {
 
-    let style = {
-        paddingLeft: 8
-    }
+    let style = {}
 
     if (props.children.length > 1) {
         style.flexDirection = 'row'
@@ -35,6 +33,17 @@ export function Left(props) {
 
     return <View style={style}>{props.children}</View>
 
+}
+
+export function Logo(props) {
+
+    const style = {
+        maxWidth: 120,
+        height: config.headerHeight - 10,
+        resizeMode: "contain"
+    }
+
+    return <Image source={images.logo} style={style} />
 }
 
 export function Title(props) {
@@ -72,9 +81,7 @@ export function Center(props) {
 
 export function Right(props) {
 
-    let style = {
-        paddingRight: 8
-    }
+    let style = {}
 
     if (props.children.length > 1) {
         style.flexDirection = 'row'
@@ -100,6 +107,7 @@ Component.Center = Center
 
 Component.Item = Item
 
+Component.Logo = Logo
 Component.Title = Title
 Component.SubTitle = SubTitle
 
@@ -108,8 +116,8 @@ Component.SubTitle = SubTitle
 const Header = styled.View`
     position: relative;
     background: ${props => props.bg || '#fff'};
+    height: ${config.headerHeight}px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0;
 `
