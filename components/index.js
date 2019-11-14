@@ -1,0 +1,7 @@
+export { default as ViewContainer } from './ViewContainer'
+export { default as SplashScreen } from './SplashScreen'
+export { default as Text } from './Text'
+export { default as Icon } from './Icon'
+export { default as Touchable } from './Touchable'
+export { default as Button } from './Button'
+export { default as Header } from './Header'
