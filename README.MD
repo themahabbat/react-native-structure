@@ -28,3 +28,8 @@
 ## GLOBAL STATE
 * You can define `initialState` of application inside `context/index` file
 * You can get global state variables by importing `MainContext` and using like `const {_state, _setState, _lang, ...} = useContext(MainContext)`
+
+
+## TODO
+* Notification receiving and handling
+* Animations
