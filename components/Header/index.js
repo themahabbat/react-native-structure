@@ -3,11 +3,11 @@ import React from 'react'
 import { View, Image } from 'react-native'
 
 import Text from '../Text'
-import Touchable from '../Touchable'
 
 import { layout, config, images } from '../../constants'
 
 import styled from 'styled-components'
+
 
 export function Item(props) {
 
@@ -21,9 +21,14 @@ export function Item(props) {
 
 }
 
+
+
 export function Left(props) {
 
-    let style = {}
+    let style = {
+        position: 'absolute',
+        left: 5
+    }
 
     if (props.children.length > 1) {
         style.flexDirection = 'row'
@@ -34,6 +39,8 @@ export function Left(props) {
     return <View style={style}>{props.children}</View>
 
 }
+
+
 
 export function Logo(props) {
 
@@ -81,7 +88,10 @@ export function Center(props) {
 
 export function Right(props) {
 
-    let style = {}
+    let style = {
+        position: 'absolute',
+        right: 5
+    }
 
     if (props.children.length > 1) {
         style.flexDirection = 'row'

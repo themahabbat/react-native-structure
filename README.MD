@@ -15,4 +15,4 @@
 
 ## NAVIGATION
 * I use `react-navigation@next` version for navigating between screens (pages)
-
+* You should define application routes in `navigator/routes` file

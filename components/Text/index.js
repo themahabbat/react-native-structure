@@ -14,10 +14,10 @@ export default function Component(props) {
     else if (props.large) fontSize = 18
     else if (props.xlarge) fontSize = 20
 
-    if (props.light) fontFamily = 'Roboto_Light'
-    else if (props.medium) fontFamily = 'Roboto_Medium'
-    else if (props.bold) fontFamily = 'Roboto_Bold'
-    else if (props.black) fontFamily = 'Roboto_Black'
+    if (props.light) fontFamily = 'Roboto_light'
+    else if (props.medium) fontFamily = 'Roboto_medium'
+    else if (props.bold) fontFamily = 'Roboto_bold'
+    else if (props.black) fontFamily = 'Roboto_black'
 
 
     const style = [

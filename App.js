@@ -1,4 +1,5 @@
 import React from 'react';
+import { Image } from 'react-native'
 
 import * as Font from 'expo-font'
 import { Asset } from 'expo-asset'
@@ -11,7 +12,7 @@ import { ViewContainer, SplashScreen as SplashScreenView } from './components';
 import { MainContextProvider } from './context'
 
 import { NavigationNativeContainer } from '@react-navigation/native';
-import Register from './pages/Register'
+import AppNavigator from './navigator'
 
 // OPTIMIZE MEMORY USAGE
 import { useScreens } from 'react-native-screens';
@@ -37,6 +38,8 @@ class App extends React.Component {
         const cacheImages = Object.keys(appImages).map(key => {
             return Asset.fromModule(appImages[key]).downloadAsync()
         })
+
+
 
         return Promise.all([
             cacheImages,
@@ -69,7 +72,7 @@ class App extends React.Component {
             <MainContextProvider>
 
                 <NavigationNativeContainer>
-                    <Register />
+                    <AppNavigator />
                 </NavigationNativeContainer>
 
             </MainContextProvider>
