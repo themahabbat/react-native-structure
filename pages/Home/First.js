@@ -7,11 +7,18 @@ import styled from 'styled-components'
 
 import { config, colors } from '../../constants'
 
+import { logout as logoutHelper } from '../../helpers'
 
 export default function Page(props) {
     const { navigation } = props
 
     const { _state, _setState, _lang } = useContext(MainContext)
+
+    const logout = () => {
+        logoutHelper(() => {
+            _setState({ authToken: null })
+        })
+    }
 
     return (
         <ViewContainer statusBarColor="#fff">
@@ -48,8 +55,8 @@ export default function Page(props) {
                 <Header.Right>
 
                     <Header.Item>
-                        <Button onPress={() => alert('Right')}>
-                            <Icon name="md-menu" size={24} />
+                        <Button onPress={() => logout()}>
+                            <Icon name="ios-log-out" size={24} />
                         </Button>
                     </Header.Item>
 
@@ -65,24 +72,6 @@ export default function Page(props) {
 
                 <Text xlarge>Home Screen</Text>
 
-                <Text light style={{ marginVertical: 15 }}>
-                    {_state.authToken ? (
-                        `Token: ${_state.authToken}`
-                    ) : (
-                            `Not logged in!`
-                        )}
-                </Text>
-
-                {!_state.authToken && (
-                    <Button
-                        style={{ marginTop: 10 }}
-                        color="red"
-                        onPress={() => _setState({ authToken: 'dsGrE0qUZQHeEfXTUWhw' })}>
-                        <Text large color="white">
-                            LOG IN
-                    </Text>
-                    </Button>
-                )}
 
 
                 <Button

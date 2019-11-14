@@ -1,5 +1,7 @@
 const bg = '#eee'
 
+const headerBorder = '#d8d8d8'
+
 const primary = '#73B508'
 
 
@@ -13,6 +15,8 @@ const green = '#2ed573'
 
 export default {
     bg,
+
+    headerBorder,
 
     primary,
 

@@ -1,20 +1,43 @@
-import React, { useContext, useEffect } from 'react'
-import { Platform } from 'react-native';
+import React, { useState, useEffect, useContext } from 'react'
+import { AsyncStorage, Platform } from 'react-native';
 
-import routes from './routes'
+import { MainContext } from '../context'
 
 import { createStackNavigator } from '@react-navigation/stack';
 
-const Stack = createStackNavigator()
+import routes from './routes'
 
+const Stack = createStackNavigator()
 
 export default function AppNavigator() {
 
     const navigationMode = Platform.OS === 'ios' ? 'card' : 'modal'
 
-    return (
+    const { _setState } = useContext(MainContext)
+
+    const [loaded, setLoaded] = useState(false)
+
+    useEffect(() => {
+
+        async function initRoute() {
+
+            let token = await AsyncStorage.getItem('@app/authToken')
+
+            if (token && token !== '') {
+                // TODO: validate token then
+                _setState({ authToken: token })
+            }
+            setLoaded(true)
+
+        }
+
+        initRoute()
+
+    }, [])
+
+    if (loaded) return (
         <Stack.Navigator
-            initialRouteName="First"
+            initialRouteName="AppFlow"
             headerMode="none"
             mode={navigationMode}>
             {Object.keys(routes).map((name, index) => {
@@ -26,8 +49,7 @@ export default function AppNavigator() {
             })}
         </Stack.Navigator>
     )
-
-
+    else return <React.Fragment />
 
 
     //

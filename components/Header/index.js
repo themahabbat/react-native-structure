@@ -4,7 +4,7 @@ import { View, Image } from 'react-native'
 
 import Text from '../Text'
 
-import { layout, config, images } from '../../constants'
+import { layout, config, images, colors } from '../../constants'
 
 import styled from 'styled-components'
 
@@ -126,7 +126,9 @@ Component.SubTitle = SubTitle
 const Header = styled.View`
     position: relative;
     background: ${props => props.bg || '#fff'};
-    height: ${config.headerHeight}px;
+    height: ${config.headerHeight - 1}px;
+    border-bottom-width: 1px;
+    border-bottom-color: ${colors.headerBorder};
     flex-direction: row;
     align-items: center;
     justify-content: space-between;

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+import { AsyncStorage } from 'react-native'
+
 import { languages } from './localization'
 import { config } from './constants'
 
@@ -19,6 +21,21 @@ export function useInterval(callback, delay) {
             return () => clearInterval(id);
         }
     }, [delay]);
+}
+
+export async function login(token, callback = null) {
+
+    await AsyncStorage.setItem('@app/authToken', token)
+
+    if (callback) callback()
+
+}
+
+export async function logout(callback = null) {
+    await AsyncStorage.removeItem('@app/authToken')
+
+    if (callback) callback()
+
 }
 
 

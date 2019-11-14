@@ -21,8 +21,8 @@ export class MainContextProvider extends React.Component {
             <MainContext.Provider
                 value={{
                     _state: this.state,
+                    _setState: (obj) => this.setState(obj),
                     _lang: getLang(this.state),
-                    _setState: (obj) => this.setState(obj)
                 }}
             >
                 {this.props.children}
