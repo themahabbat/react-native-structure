@@ -19,7 +19,7 @@ export default function AppFlow(props) {
         }
         else route = config.defaultRoute
 
-        navigation.navigate(route)
+        navigation.push(route)
     }, [_state.authToken])
 
 
